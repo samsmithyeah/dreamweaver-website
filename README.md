@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DreamWeaver Website
 
-## Getting Started
+Official website for DreamWeaver - AI-powered personalized bedtime stories for children.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Responsive Design**: Optimized for mobile, tablet, and desktop
+- **DreamWeaver Branding**: Matches the app's golden yellow (#D4AF37) and navy theme
+- **Static Site Generation**: Optimized for performance and SEO
+- **Accessibility**: Built with semantic HTML and ARIA labels
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Pages
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Home**: Clean hero section with brand name, description, and app store buttons
+- **Privacy Policy**: Complete privacy policy matching the app
+- **Terms of Service**: Terms and conditions for app usage
+- **Contact**: Contact information and FAQ section
+- **Delete Account**: Account deletion instructions (for app store compliance, not linked in navigation)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Tech Stack
 
-## Learn More
+- **Framework**: Next.js 15 with App Router
+- **Styling**: Tailwind CSS v4
+- **Typography**: Inter (content) + PlayfairDisplay (brand only) + SpaceMono (accents)
+- **TypeScript**: Full type safety
+- **Static Export**: Ready for deployment to any static host
 
-To learn more about Next.js, take a look at the following resources:
+## Development
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. Start development server:
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+3. Build for production:
+   ```bash
+   npm run build
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Vercel (Recommended - Free)
+
+1. Connect your GitHub repository to Vercel
+2. Vercel will automatically detect Next.js and deploy
+3. Add your custom domain `dreamweaver-app.com` in Vercel settings
+4. Update Cloudflare DNS to point to Vercel
+
+### Netlify (Alternative - Free)
+
+1. Connect your GitHub repository to Netlify
+2. Build command: `npm run build`
+3. Publish directory: `out`
+4. Add your custom domain in Netlify settings
+
+### Manual Static Hosting
+
+1. Run `npm run build` to generate static files in the `out` directory
+2. Upload the `out` folder contents to any static host
+3. Configure your domain to point to the hosting service
+
+## Domain Setup with Cloudflare
+
+1. In Cloudflare DNS settings, add a CNAME record:
+   - Name: `@` (or `dreamweaver-app.com`)
+   - Target: Your hosting platform's domain (e.g., `your-site.vercel.app`)
+   - Proxy status: Proxied (orange cloud)
+
+2. For www subdomain, add another CNAME:
+   - Name: `www`
+   - Target: `dreamweaver-app.com`
+   - Proxy status: Proxied
+
+## Content Updates
+
+The website content is taken directly from the DreamWeaver app source code to ensure consistency:
+
+- **Privacy Policy**: Matches `app/privacy-policy.tsx` from the app
+- **Terms of Service**: Matches `app/terms-of-service.tsx` from the app
+- **Branding**: Uses the same colors from `constants/Theme.ts`
+- **Typography**: 
+  - PlayfairDisplay: Only for "DreamWeaver" brand name (matches app)
+  - Inter: All content, headings, and body text (modern, readable)
+  - SpaceMono: App store buttons and accent elements (matches app)
+- **Contact Email**: `support@dreamweaver-app.com`
+
+## App Store Links
+
+The app store buttons are currently showing "Coming Soon". When the app is published, update the home page:
+
+1. **In `src/app/page.tsx`**, change:
+   ```jsx
+   <AppStoreButtons showComingSoon={true} />
+   ```
+   to:
+   ```jsx
+   <AppStoreButtons 
+     showComingSoon={false}
+     appStoreUrl="https://apps.apple.com/your-app-link"
+     playStoreUrl="https://play.google.com/store/apps/details?id=your.package.name"
+   />
+   ```
+
+2. The buttons are already branded and styled to match the DreamWeaver theme
+3. They use the secondary font (SpaceMono) consistent with the app's design
+
+## Support
+
+For questions about the website, contact: support@dreamweaver-app.com

@@ -1,6 +1,7 @@
 {
-  "name": "dreamweaver-website",
-  "version": "0.1.0",
+  "name": "dreamweaver-website", 
+  "description": "Official website for DreamWeaver - AI-powered personalized bedtime stories for children",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
