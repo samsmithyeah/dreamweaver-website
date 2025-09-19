@@ -43,7 +43,7 @@ function VerifyEmailContent() {
   if (status === "loading" || status === "verifying") {
     return (
       <div className="min-h-screen bg-navy-deep flex items-start justify-center px-4 pt-16 pb-8">
-        <div className="text-center text-foreground">
+        <div className="bg-navy-light/80 backdrop-blur-md rounded-lg p-6 max-w-md w-full text-center text-foreground border border-border">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
           <p className="text-text-secondary">
             {status === "verifying" ? "Verifying your email..." : "Loading..."}
@@ -56,7 +56,7 @@ function VerifyEmailContent() {
   if (status === "success") {
     return (
       <div className="min-h-screen bg-navy-deep flex items-start justify-center px-4 pt-16 pb-8">
-        <div className="text-center text-foreground max-w-md w-full">
+        <div className="bg-navy-light/80 backdrop-blur-md rounded-lg p-6 max-w-md w-full text-center text-foreground border border-border">
           <div className="mb-4 flex justify-center">
             <div className="w-16 h-16 bg-success rounded-full flex items-center justify-center">
               <svg
