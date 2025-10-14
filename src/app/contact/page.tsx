@@ -70,10 +70,10 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="text-foreground font-medium">
-                    General Inquiries
+                    General Enquiries
                   </h3>
                   <p className="text-text-secondary text-sm">
-                    For business partnerships, media inquiries, or general
+                    For business partnerships, media enquiries, or general
                     questions about DreamWeaver.
                   </p>
                 </div>
