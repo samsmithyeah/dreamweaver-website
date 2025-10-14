@@ -29,7 +29,8 @@ export async function GET(request: NextRequest) {
         // Redirect to fallback page that will attempt deep link
         const recoverUrl = new URL('/auth/recover-email', baseUrl);
         recoverUrl.searchParams.set('oobCode', oobCode || '');
-        if (continueUrl) recoverUrl.searchParams.set('continueUrl', continueUrl);
+        if (continueUrl)
+          recoverUrl.searchParams.set('continueUrl', continueUrl);
         return NextResponse.redirect(recoverUrl.toString());
 
       default:
@@ -38,7 +39,7 @@ export async function GET(request: NextRequest) {
     }
   } catch (error) {
     console.error('Firebase auth action error:', error);
-    
+
     // On error, redirect to home with error parameter
     const errorUrl = new URL('/', baseUrl);
     errorUrl.searchParams.set('error', 'auth_action_failed');

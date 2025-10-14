@@ -1,0 +1,22 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": [
+    "src/app/**/*.tsx",
+    "src/app/**/*.ts",
+    "src/components/**/*.tsx",
+    "src/lib/**/*.ts"
+  ],
+  "project": ["src/**/*.{ts,tsx}"],
+  "ignore": [
+    "**/*.test.{ts,tsx}",
+    "**/*.spec.{ts,tsx}",
+    "out/**",
+    ".next/**"
+  ],
+  "ignoreDependencies": [
+    "tailwindcss",
+    "eslint",
+    "eslint-config-next",
+    "postcss"
+  ]
+}
