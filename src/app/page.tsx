@@ -1,4 +1,5 @@
-import AppStoreButtons from "@/components/AppStoreButtons";
+import AppStoreButtons from '@/components/AppStoreButtons';
+import { APP_NAME, APP_TAGLINE } from '@/lib/constants';
 
 export default function Home() {
   return (
@@ -8,13 +9,12 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-brand text-primary golden-text-glow mb-6 brand-title">
-              DreamWeaver
+              {APP_NAME}
             </h1>
             <p className="text-xl md:text-2xl text-text-secondary mb-8 max-w-3xl mx-auto">
-              Create magical, personalized bedtime stories for your children with AI. 
-              Every story is unique and tailored to your child&apos;s interests and imagination.
+              {APP_TAGLINE}
             </p>
-            
+
             {/* App Store Buttons */}
             <div className="mb-12">
               <AppStoreButtons showComingSoon={true} />
@@ -22,7 +22,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
     </div>
   );
 }

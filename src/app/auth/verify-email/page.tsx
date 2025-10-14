@@ -1,59 +1,73 @@
-"use client";
+'use client';
 
-import { useEffect, useState, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
-import { applyActionCode } from "firebase/auth";
-import { auth } from "../../../lib/firebase";
+import { useEffect, useState, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { applyActionCode } from 'firebase/auth';
+import { auth } from '../../../lib/firebase';
 
 function VerifyEmailContent() {
   const searchParams = useSearchParams();
   const [status, setStatus] = useState<
-    "loading" | "verifying" | "success" | "redirecting" | "fallback" | "error"
-  >("loading");
-  const [error, setError] = useState<string>("");
-  const oobCode = searchParams.get("oobCode");
-  const continueUrl = searchParams.get("continueUrl");
+    'loading' | 'verifying' | 'success' | 'redirecting' | 'fallback' | 'error'
+  >('loading');
+  const [error, setError] = useState<string>('');
+  const oobCode = searchParams.get('oobCode');
+  const continueUrl = searchParams.get('continueUrl');
 
   useEffect(() => {
+    let isCancelled = false;
+    let timerId: ReturnType<typeof setTimeout>;
+
     if (!oobCode) {
-      setStatus("fallback");
+      setStatus('fallback');
       return;
     }
 
     // First verify the email with Firebase
-    setStatus("verifying");
+    setStatus('verifying');
 
     applyActionCode(auth, oobCode)
       .then(() => {
+        if (isCancelled) return;
         // Email verified successfully
-        setStatus("success");
+        setStatus('success');
 
         // Wait 2 seconds to show success, then show completion message
-        setTimeout(() => {
-          setStatus("fallback");
+        timerId = setTimeout(() => {
+          if (!isCancelled) {
+            setStatus('fallback');
+          }
         }, 2000);
       })
-      .catch((error) => {
-        console.error("Email verification error:", error);
+      .catch(error => {
+        if (isCancelled) return;
+        console.error('Email verification error:', error);
         setError(error.message);
-        setStatus("error");
+        setStatus('error');
       });
+
+    return () => {
+      isCancelled = true;
+      if (timerId) {
+        clearTimeout(timerId);
+      }
+    };
   }, [oobCode, continueUrl]);
 
-  if (status === "loading" || status === "verifying") {
+  if (status === 'loading' || status === 'verifying') {
     return (
       <div className="min-h-screen bg-navy-deep flex items-start justify-center px-4 pt-16 pb-8">
         <div className="bg-navy-light/80 backdrop-blur-md rounded-lg p-6 max-w-md w-full text-center text-foreground border border-border">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
           <p className="text-text-secondary">
-            {status === "verifying" ? "Verifying your email..." : "Loading..."}
+            {status === 'verifying' ? 'Verifying your email...' : 'Loading...'}
           </p>
         </div>
       </div>
     );
   }
 
-  if (status === "success") {
+  if (status === 'success') {
     return (
       <div className="min-h-screen bg-navy-deep flex items-start justify-center px-4 pt-16 pb-8">
         <div className="bg-navy-light/80 backdrop-blur-md rounded-lg p-6 max-w-md w-full text-center text-foreground border border-border">
@@ -87,7 +101,7 @@ function VerifyEmailContent() {
     );
   }
 
-  if (status === "error") {
+  if (status === 'error') {
     return (
       <div className="min-h-screen bg-navy-deep flex items-start justify-center px-4 pt-16 pb-8">
         <div className="bg-navy-light/80 backdrop-blur-md rounded-lg p-6 max-w-md w-full text-center text-foreground border border-border">
