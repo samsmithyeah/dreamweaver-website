@@ -15,6 +15,9 @@ function VerifyEmailContent() {
   const continueUrl = searchParams.get('continueUrl');
 
   useEffect(() => {
+    let isCancelled = false;
+    let timerId: ReturnType<typeof setTimeout>;
+
     if (!oobCode) {
       setStatus('fallback');
       return;
@@ -25,19 +28,30 @@ function VerifyEmailContent() {
 
     applyActionCode(auth, oobCode)
       .then(() => {
+        if (isCancelled) return;
         // Email verified successfully
         setStatus('success');
 
         // Wait 2 seconds to show success, then show completion message
-        setTimeout(() => {
-          setStatus('fallback');
+        timerId = setTimeout(() => {
+          if (!isCancelled) {
+            setStatus('fallback');
+          }
         }, 2000);
       })
       .catch(error => {
+        if (isCancelled) return;
         console.error('Email verification error:', error);
         setError(error.message);
         setStatus('error');
       });
+
+    return () => {
+      isCancelled = true;
+      if (timerId) {
+        clearTimeout(timerId);
+      }
+    };
   }, [oobCode, continueUrl]);
 
   if (status === 'loading' || status === 'verifying') {
