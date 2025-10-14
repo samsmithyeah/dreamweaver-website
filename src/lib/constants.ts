@@ -1,7 +1,7 @@
 // App branding
 export const APP_NAME = 'DreamWeaver';
 export const APP_TAGLINE =
-  "Create magical, personalized bedtime stories for your children with AI. Every story is unique and tailored to your child's interests and imagination.";
+  'Unleash endless creativity. Create personalised, beautifully illustrated stories with your children in minutes using AI.';
 export const APP_FOOTER_TAGLINE = 'Made with ❤️ for families everywhere';
 
 // Contact information
