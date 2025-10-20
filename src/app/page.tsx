@@ -17,7 +17,10 @@ export default function Home() {
 
             {/* App Store Buttons */}
             <div className="mb-12">
-              <AppStoreButtons showComingSoon={true} />
+              <AppStoreButtons
+                showComingSoon={false}
+                appStoreUrl="https://apps.apple.com/gb/app/dreamweaver-ai/id6749024646"
+              />
             </div>
           </div>
         </div>
