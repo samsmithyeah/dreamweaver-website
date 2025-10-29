@@ -2,6 +2,7 @@
 
 import { CoverImage } from './CoverImage';
 import { CoverMetadata } from './CoverMetadata';
+import { formatDate } from '@/lib/utils';
 
 interface Story {
   id: string;
@@ -19,33 +20,6 @@ interface CoverPageProps {
 }
 
 export function CoverPage({ story, onNext }: CoverPageProps) {
-  const formatDate = (
-    date: Date | { seconds: number; nanoseconds: number }
-  ) => {
-    try {
-      let d: Date;
-      if (date instanceof Date) {
-        d = date;
-      } else if (date && typeof date === 'object' && 'seconds' in date) {
-        d = new Date(date.seconds * 1000);
-      } else {
-        return null;
-      }
-
-      if (isNaN(d.getTime())) {
-        return null;
-      }
-
-      return d.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      });
-    } catch {
-      return null;
-    }
-  };
-
   const formattedDate = formatDate(story.createdAt);
   const totalPages = story.storyContent.length;
 

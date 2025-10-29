@@ -5,9 +5,18 @@ if (!admin.apps.length) {
   // In production, use service account credentials from environment variables
   // For local development, you can use Application Default Credentials or a service account JSON file
 
-  const serviceAccount = process.env.FIREBASE_SERVICE_ACCOUNT
-    ? JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT)
-    : undefined;
+  const serviceAccount = (() => {
+    const serviceAccountJSON = process.env.FIREBASE_SERVICE_ACCOUNT;
+    if (!serviceAccountJSON) {
+      return undefined;
+    }
+    try {
+      return JSON.parse(serviceAccountJSON);
+    } catch (error) {
+      console.error('Error parsing FIREBASE_SERVICE_ACCOUNT:', error);
+      return undefined;
+    }
+  })();
 
   admin.initializeApp({
     credential: serviceAccount

@@ -89,8 +89,7 @@ export async function GET(
           .get();
         if (userDoc.exists) {
           const userData = userDoc.data();
-          creatorDisplayName =
-            userData?.displayName || userData?.email?.split('@')[0];
+          creatorDisplayName = userData?.displayName;
 
           // Fetch audience children names from selectedChildrenIds
           const selectedChildrenIds =
@@ -122,9 +121,10 @@ export async function GET(
       coverImageUrl: getPublicUrl(storyData.coverImageUrl),
       createdAt: storyData.createdAt,
       storyConfiguration: {
-        theme: storyData.storyConfiguration?.theme,
-        illustrationStyle: storyData.storyConfiguration?.illustrationStyle,
-        pageCount: storyData.storyConfiguration?.pageCount,
+        theme: storyData.storyConfiguration?.theme || 'Unknown Theme',
+        illustrationStyle:
+          storyData.storyConfiguration?.illustrationStyle || 'Default Style',
+        pageCount: storyData.storyConfiguration?.pageCount || 0,
       },
       creatorDisplayName,
       audienceChildren,

@@ -15,11 +15,11 @@ export function CoverImage({ imageUrl, title }: CoverImageProps) {
 
   return (
     <div
-      className="rounded-2xl border-[3px] border-[#D4AF37] overflow-hidden shadow-[0_0_40px_rgba(212,175,55,0.4)] mb-6 landscape:mb-0 landscape:w-1/2 landscape:h-[90%]"
+      className="rounded-2xl border-[3px] border-[#D4AF37] overflow-hidden shadow-[0_0_40px_rgba(212,175,55,0.4)] mb-6 landscape:mb-0 landscape:w-1/2 landscape:max-h-[calc(100vh-93px-2rem)]"
       style={{ backgroundColor: CREAM_COLOR }}
     >
       {imageUrl && (
-        <div className="relative w-full aspect-square bg-[rgba(26,27,58,0.5)] landscape:h-full">
+        <div className="relative w-full aspect-square bg-[rgba(26,27,58,0.5)] landscape:max-h-full">
           {imageLoading && (
             <div className="absolute inset-0 flex items-center justify-center z-10">
               <div className="w-12 h-12 border-4 border-[#D4AF37] border-t-transparent rounded-full animate-spin"></div>

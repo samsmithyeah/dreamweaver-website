@@ -93,6 +93,8 @@ export function StoryViewer({ story }: StoryViewerProps) {
         pageNumber={currentPage}
         totalPages={totalPages}
         storyTitle={story.title}
+        creatorDisplayName={story.creatorDisplayName}
+        audienceChildren={story.audienceChildren}
         onTitleClick={() => updatePage(-1)}
         onPrevious={handlePrevious}
         onNext={handleNext}
