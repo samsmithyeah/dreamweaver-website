@@ -1,13 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { adminDb, adminStorage } from '@/lib/firebase-admin';
 
-export const dynamic = 'force-dynamic';
+// Cache for 1 hour, revalidate every 5 minutes
+export const revalidate = 300;
 
 interface StoryPage {
   page: number;
   text: string;
   imageUrl: string;
   audioUrl?: string;
+}
+
+interface Child {
+  id: string;
+  childName: string;
 }
 
 interface Story {
@@ -94,10 +100,10 @@ export async function GET(
             Array.isArray(selectedChildrenIds) &&
             selectedChildrenIds.length > 0
           ) {
-            const children = userData?.children || [];
+            const children = (userData?.children || []) as Child[];
             audienceChildren = selectedChildrenIds
               .map((childId: string) => {
-                const child = children.find((c: any) => c.id === childId);
+                const child = children.find((c: Child) => c.id === childId);
                 return child?.childName;
               })
               .filter((name: string | undefined) => name !== undefined);
@@ -124,7 +130,13 @@ export async function GET(
       audienceChildren,
     };
 
-    return NextResponse.json({ success: true, story });
+    const response = NextResponse.json({ success: true, story });
+    // Cache for 5 minutes in browser, 1 hour in CDN with revalidation
+    response.headers.set(
+      'Cache-Control',
+      'public, s-maxage=3600, stale-while-revalidate=300'
+    );
+    return response;
   } catch (error) {
     console.error('Error fetching shared story:', error);
     return NextResponse.json(
