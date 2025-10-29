@@ -25,15 +25,6 @@ export function StoryImage({
     setImageError(false);
   }, [imageUrl, pageNumber]);
 
-  useEffect(() => {
-    const img = new window.Image();
-    img.onload = () => {
-      const ratio = `${img.width} / ${img.height}`;
-      setAspectRatio(ratio);
-    };
-    img.src = imageUrl;
-  }, [imageUrl]);
-
   if (!imageUrl) return null;
 
   return (
@@ -44,7 +35,7 @@ export function StoryImage({
     >
       {imageLoading && !imageError && (
         <div className="absolute inset-0 flex items-center justify-center z-10">
-          <div className="w-16 h-16 border-4 border-[#D4AF37] border-t-transparent rounded-full animate-spin"></div>
+          <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
         </div>
       )}
       {!imageError ? (
@@ -55,7 +46,10 @@ export function StoryImage({
           fill
           className={`transition-opacity duration-200 ${imageLoading ? 'opacity-0' : 'opacity-100'}`}
           style={{ objectFit: 'contain', objectPosition: 'center' }}
-          onLoadingComplete={() => setImageLoading(false)}
+          onLoadingComplete={img => {
+            setAspectRatio(`${img.naturalWidth} / ${img.naturalHeight}`);
+            setImageLoading(false);
+          }}
           onError={() => {
             setImageLoading(false);
             setImageError(true);
@@ -65,7 +59,7 @@ export function StoryImage({
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
             <svg
-              className="w-12 h-12 mx-auto mb-2 text-[#999]"
+              className="w-12 h-12 mx-auto mb-2 text-text-muted"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -75,7 +69,7 @@ export function StoryImage({
                 clipRule="evenodd"
               />
             </svg>
-            <p className="text-[#999]">Image unavailable</p>
+            <p className="text-text-muted">Image unavailable</p>
           </div>
         </div>
       )}

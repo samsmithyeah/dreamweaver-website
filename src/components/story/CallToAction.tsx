@@ -10,16 +10,10 @@ export function CallToAction({ onReadAgain }: CallToActionProps) {
   return (
     <>
       <div className="mb-4 landscape:mb-6">
-        <p
-          className="text-base md:text-lg landscape:text-2xl text-[#0f1129] mb-2 landscape:mb-3"
-          style={{ fontFamily: 'var(--font-playfair)' }}
-        >
+        <p className="text-base md:text-lg landscape:text-2xl text-navy-deep mb-2 landscape:mb-3 font-brand">
           Want to create your own magical stories?
         </p>
-        <p
-          className="text-sm md:text-base landscape:text-lg text-[#0f1129]/80"
-          style={{ fontFamily: 'var(--font-playfair)' }}
-        >
+        <p className="text-sm md:text-base landscape:text-lg text-navy-deep/80 font-brand">
           Download DreamWeaver and start crafting personalised AI-powered
           stories with your children
         </p>
@@ -34,8 +28,7 @@ export function CallToAction({ onReadAgain }: CallToActionProps) {
 
       <button
         onClick={onReadAgain}
-        className="text-[#D4AF37] hover:text-[#fcd34d] font-semibold underline transition-colors text-sm landscape:text-base"
-        style={{ fontFamily: 'var(--font-playfair)' }}
+        className="text-primary hover:text-primary-light font-semibold underline transition-colors text-sm landscape:text-base font-brand"
       >
         Read again
       </button>
