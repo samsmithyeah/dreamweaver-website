@@ -2,17 +2,23 @@ interface AppStoreButtonsProps {
   showComingSoon?: boolean;
   appStoreUrl?: string;
   playStoreUrl?: string;
+  align?: 'left' | 'center';
 }
 
 export default function AppStoreButtons({
   showComingSoon = true,
   appStoreUrl,
   playStoreUrl,
+  align = 'center',
 }: AppStoreButtonsProps) {
+  const alignmentClasses =
+    align === 'left'
+      ? 'justify-start items-start'
+      : 'justify-center items-center';
   const AppStoreButton = ({ isComingSoon }: { isComingSoon: boolean }) => (
     <div className={isComingSoon ? 'group' : 'group cursor-pointer'}>
       <div
-        className={`bg-black rounded-lg px-6 py-3 flex items-center space-x-3 transition-colors golden-glow ${!isComingSoon ? 'hover:bg-gray-800' : ''}`}
+        className={`bg-black rounded-lg px-6 py-3 flex items-center space-x-3 transition-colors w-48 ${!isComingSoon ? 'hover:bg-gray-800' : ''}`}
       >
         <svg
           className="w-8 h-8 text-white"
@@ -41,7 +47,7 @@ export default function AppStoreButtons({
   const PlayStoreButton = ({ isComingSoon }: { isComingSoon: boolean }) => (
     <div className={isComingSoon ? 'group' : 'group cursor-pointer'}>
       <div
-        className={`bg-black rounded-lg px-6 py-3 flex items-center space-x-3 transition-colors golden-glow ${!isComingSoon ? 'hover:bg-gray-800' : ''}`}
+        className={`bg-black rounded-lg px-6 py-3 flex items-center space-x-3 transition-colors w-48 ${!isComingSoon ? 'hover:bg-gray-800' : ''}`}
       >
         <svg
           className="w-8 h-8 text-white"
@@ -73,7 +79,7 @@ export default function AppStoreButtons({
 
   if (showComingSoon) {
     return (
-      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <div className={`flex flex-col sm:flex-row gap-4 ${alignmentClasses}`}>
         <AppStoreButton isComingSoon={true} />
         <PlayStoreButton isComingSoon={true} />
       </div>
@@ -81,7 +87,7 @@ export default function AppStoreButtons({
   }
 
   return (
-    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+    <div className={`flex flex-col sm:flex-row gap-4 ${alignmentClasses}`}>
       {appStoreUrl ? (
         <a href={appStoreUrl} target="_blank" rel="noopener noreferrer">
           <AppStoreButton isComingSoon={false} />

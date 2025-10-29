@@ -21,6 +21,8 @@ interface Story {
     illustrationStyle: string;
     pageCount: number;
   };
+  creatorDisplayName?: string;
+  audienceChildren?: string[];
 }
 
 export async function GET(
@@ -70,6 +72,42 @@ export async function GET(
       audioUrl: page.audioUrl ? getPublicUrl(page.audioUrl) : undefined,
     }));
 
+    // Fetch creator's display name and audience children
+    let creatorDisplayName: string | undefined;
+    let audienceChildren: string[] | undefined;
+    if (storyData.userId) {
+      try {
+        const userDoc = await adminDb
+          .collection('users')
+          .doc(storyData.userId)
+          .get();
+        if (userDoc.exists) {
+          const userData = userDoc.data();
+          creatorDisplayName =
+            userData?.displayName || userData?.email?.split('@')[0];
+
+          // Fetch audience children names from selectedChildrenIds
+          const selectedChildrenIds =
+            storyData.generationMetadata?.selectedChildrenIds;
+          if (
+            selectedChildrenIds &&
+            Array.isArray(selectedChildrenIds) &&
+            selectedChildrenIds.length > 0
+          ) {
+            const children = userData?.children || [];
+            audienceChildren = selectedChildrenIds
+              .map((childId: string) => {
+                const child = children.find((c: any) => c.id === childId);
+                return child?.childName;
+              })
+              .filter((name: string | undefined) => name !== undefined);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    }
+
     // Return story data without sensitive user information
     const story: Story = {
       id: storyDoc.id,
@@ -82,6 +120,8 @@ export async function GET(
         illustrationStyle: storyData.storyConfiguration?.illustrationStyle,
         pageCount: storyData.storyConfiguration?.pageCount,
       },
+      creatorDisplayName,
+      audienceChildren,
     };
 
     return NextResponse.json({ success: true, story });

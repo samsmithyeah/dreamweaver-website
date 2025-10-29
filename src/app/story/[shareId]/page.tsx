@@ -20,6 +20,7 @@ interface Story {
     illustrationStyle: string;
     pageCount: number;
   };
+  creatorDisplayName?: string;
 }
 
 async function getSharedStory(shareId: string): Promise<Story | null> {
@@ -84,5 +85,5 @@ export default async function SharedStoryPage({
     notFound();
   }
 
-  return <StoryViewer story={story} />;
+  return <StoryViewer story={story} shareId={shareId} />;
 }

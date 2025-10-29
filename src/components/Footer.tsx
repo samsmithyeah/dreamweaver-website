@@ -5,6 +5,7 @@ import {
   APP_FOOTER_TAGLINE,
   SUPPORT_EMAIL,
 } from '@/lib/constants';
+import AppStoreButtons from './AppStoreButtons';
 
 export default function Footer() {
   return (
@@ -18,7 +19,12 @@ export default function Footer() {
                 {APP_NAME}
               </div>
             </Link>
-            <p className="text-text-secondary max-w-md">{APP_TAGLINE}</p>
+            <p className="text-text-secondary max-w-md mb-6">{APP_TAGLINE}</p>
+            <AppStoreButtons
+              showComingSoon={false}
+              appStoreUrl="https://apps.apple.com/gb/app/dreamweaver-ai/id6749024646"
+              align="left"
+            />
           </div>
 
           {/* Links */}

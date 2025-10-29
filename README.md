@@ -1,6 +1,6 @@
 # DreamWeaver Website
 
-Official website for DreamWeaver - AI-powered personalized bedtime stories for children.
+Official website for DreamWeaver - AI-powered personalised bedtime stories for children.
 
 ## Features
 
@@ -28,11 +28,13 @@ Official website for DreamWeaver - AI-powered personalized bedtime stories for c
 ## Development
 
 1. Install dependencies:
+
    ```bash
    npm install
    ```
 
 2. Start development server:
+
    ```bash
    npm run dev
    ```
@@ -83,7 +85,7 @@ The website content is taken directly from the DreamWeaver app source code to en
 - **Privacy Policy**: Matches `app/privacy-policy.tsx` from the app
 - **Terms of Service**: Matches `app/terms-of-service.tsx` from the app
 - **Branding**: Uses the same colors from `constants/Theme.ts`
-- **Typography**: 
+- **Typography**:
   - PlayfairDisplay: Only for "DreamWeaver" brand name (matches app)
   - Inter: All content, headings, and body text (modern, readable)
   - SpaceMono: App store buttons and accent elements (matches app)
@@ -94,12 +96,15 @@ The website content is taken directly from the DreamWeaver app source code to en
 The app store buttons are currently showing "Coming Soon". When the app is published, update the home page:
 
 1. **In `src/app/page.tsx`**, change:
+
    ```jsx
    <AppStoreButtons showComingSoon={true} />
    ```
+
    to:
+
    ```jsx
-   <AppStoreButtons 
+   <AppStoreButtons
      showComingSoon={false}
      appStoreUrl="https://apps.apple.com/your-app-link"
      playStoreUrl="https://play.google.com/store/apps/details?id=your.package.name"
