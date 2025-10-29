@@ -36,8 +36,10 @@ export async function generateMetadata({
 
 export default async function SharedStoryPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ shareId: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const { shareId } = await params;
   const story = await getSharedStory(shareId);
@@ -46,5 +48,25 @@ export default async function SharedStoryPage({
     notFound();
   }
 
-  return <StoryViewer story={story} shareId={shareId} />;
+  // Read initial page from URL to prevent hydration mismatch
+  const search = await searchParams;
+  const pageParam = search.page;
+  let initialPage = -1; // -1 for cover page
+
+  if (pageParam === 'cover') {
+    initialPage = -1;
+  } else if (pageParam === 'end') {
+    initialPage = story.storyContent.length;
+  } else if (typeof pageParam === 'string') {
+    const pageNum = parseInt(pageParam, 10);
+    if (
+      !isNaN(pageNum) &&
+      pageNum >= 1 &&
+      pageNum <= story.storyContent.length
+    ) {
+      initialPage = pageNum - 1;
+    }
+  }
+
+  return <StoryViewer story={story} initialPage={initialPage} />;
 }

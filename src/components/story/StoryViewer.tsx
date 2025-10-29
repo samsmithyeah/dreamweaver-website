@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { CoverPage } from './CoverPage';
 import { StoryPage } from './StoryPage';
@@ -30,27 +30,14 @@ interface Story {
 
 interface StoryViewerProps {
   story: Story;
-  shareId: string;
+  initialPage?: number;
 }
 
-export function StoryViewer({ story }: StoryViewerProps) {
+export function StoryViewer({ story, initialPage = -1 }: StoryViewerProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [currentPage, setCurrentPage] = useState(-1); // -1 for cover page
+  const [currentPage, setCurrentPage] = useState(initialPage); // -1 for cover page
   const totalPages = story.storyContent.length;
-
-  // Initialize current page from URL
-  useEffect(() => {
-    const pageParam = searchParams.get('page');
-    if (pageParam === 'cover') {
-      setCurrentPage(-1);
-    } else if (pageParam) {
-      const pageNum = parseInt(pageParam, 10);
-      if (!isNaN(pageNum) && pageNum >= 1 && pageNum <= totalPages) {
-        setCurrentPage(pageNum - 1);
-      }
-    }
-  }, [searchParams, totalPages]);
 
   // Update URL when page changes
   const updatePage = (page: number) => {

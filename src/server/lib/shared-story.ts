@@ -83,11 +83,11 @@ export async function getSharedStory(shareId: string): Promise<Story | null> {
             selectedChildrenIds.length > 0
           ) {
             const children = (userData?.children || []) as Child[];
+            const childrenMap = new Map(
+              children.map((c: Child) => [c.id, c.childName])
+            );
             audienceChildren = selectedChildrenIds
-              .map((childId: string) => {
-                const child = children.find((c: Child) => c.id === childId);
-                return child?.childName;
-              })
+              .map((childId: string) => childrenMap.get(childId))
               .filter((name): name is string => name !== undefined);
           }
         }

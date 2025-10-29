@@ -18,7 +18,7 @@ export default function AppStoreButtons({
   const AppStoreButton = ({ isComingSoon }: { isComingSoon: boolean }) => (
     <div className={isComingSoon ? 'group' : 'group cursor-pointer'}>
       <div
-        className={`bg-black rounded-lg px-6 py-3 flex items-center space-x-3 transition-colors w-48 ${!isComingSoon ? 'hover:bg-gray-800' : ''}`}
+        className={`bg-black rounded-lg px-6 py-3 flex items-center space-x-3 transition-colors min-w-48 ${!isComingSoon ? 'hover:bg-gray-800' : ''}`}
       >
         <svg
           className="w-8 h-8 text-white"
@@ -47,7 +47,7 @@ export default function AppStoreButtons({
   const PlayStoreButton = ({ isComingSoon }: { isComingSoon: boolean }) => (
     <div className={isComingSoon ? 'group' : 'group cursor-pointer'}>
       <div
-        className={`bg-black rounded-lg px-6 py-3 flex items-center space-x-3 transition-colors w-48 ${!isComingSoon ? 'hover:bg-gray-800' : ''}`}
+        className={`bg-black rounded-lg px-6 py-3 flex items-center space-x-3 transition-colors min-w-48 ${!isComingSoon ? 'hover:bg-gray-800' : ''}`}
       >
         <svg
           className="w-8 h-8 text-white"

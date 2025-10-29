@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSharedStory } from '@/server/lib/shared-story';
 
-// Cache for 1 hour, revalidate every 5 minutes
-export const revalidate = 300;
-
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ shareId: string }> }
