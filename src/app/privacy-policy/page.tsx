@@ -21,7 +21,7 @@ export default function PrivacyPolicy() {
     {
       title: 'How we use information',
       content:
-        'We use collected information to:\n\n• Create and manage your account\n• Generate personalized stories and illustrations based on provided information\n• Email you regarding your account (such as verification)\n• Improve the efficiency and operation of the app\n• Monitor usage trends to enhance your experience\n• Analyze app performance and user engagement through Firebase Analytics\n• Understand user acquisition sources and campaign effectiveness\n• Provide customer support',
+        'We use collected information to:\n\n• Create and manage your account\n• Generate personalised stories and illustrations based on provided information\n• Email you regarding your account (such as verification)\n• Improve the efficiency and operation of the app\n• Monitor usage trends to enhance your experience\n• Analyze app performance and user engagement through Firebase Analytics\n• Understand user acquisition sources and campaign effectiveness\n• Provide customer support',
     },
     {
       title: 'Data storage and security',

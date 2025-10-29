@@ -16,7 +16,7 @@ export default function TermsOfService() {
     {
       title: 'Description of service',
       content:
-        'DreamWeaver is a mobile application that generates personalized bedtime stories for children using artificial intelligence. The service is designed to create age-appropriate, family-friendly content.',
+        'DreamWeaver is a mobile application that generates personalised bedtime stories for children using artificial intelligence. The service is designed to create age-appropriate, family-friendly content.',
     },
     {
       title: 'User accounts and responsibilities',

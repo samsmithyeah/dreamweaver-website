@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { APP_NAME, NAV_ITEMS } from '@/lib/constants';
+import { APP_NAME } from '@/lib/constants';
+import AppStoreButtons from './AppStoreButtons';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,18 +19,13 @@ export default function Header() {
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {NAV_ITEMS.map(item => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-foreground hover:text-primary transition-colors"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+          {/* Desktop App Store Buttons */}
+          <div className="hidden md:block scale-75 origin-right">
+            <AppStoreButtons
+              showComingSoon={false}
+              appStoreUrl="https://apps.apple.com/gb/app/dreamweaver-ai/id6749024646"
+            />
+          </div>
 
           {/* Mobile menu button */}
           <button
@@ -65,18 +61,12 @@ export default function Header() {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border">
-            <nav className="flex flex-col space-y-4">
-              {NAV_ITEMS.map(item => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-foreground hover:text-primary transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
+            <div className="scale-90">
+              <AppStoreButtons
+                showComingSoon={false}
+                appStoreUrl="https://apps.apple.com/gb/app/dreamweaver-ai/id6749024646"
+              />
+            </div>
           </div>
         )}
       </div>
