@@ -93,8 +93,8 @@ export default function Contact() {
                   When will DreamWeaver be available?
                 </h3>
                 <p className="text-text-secondary text-sm">
-                  DreamWeaver is coming soon to both the App Store and Google
-                  Play.
+                  DreamWeaver is available now in the App Store and is coming
+                  soon to Google Play.
                 </p>
               </div>
 
@@ -116,7 +116,7 @@ export default function Contact() {
                 <p className="text-text-secondary text-sm">
                   Our AI creates unique stories based on your child&apos;s
                   profile, interests, and preferences. Each story is
-                  personalized and includes beautiful illustrations.
+                  personalised and includes beautiful illustrations.
                 </p>
               </div>
 

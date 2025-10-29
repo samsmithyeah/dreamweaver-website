@@ -32,7 +32,7 @@ export function CoverMetadata({
         <div className="space-y-1">
           {creatorDisplayName && (
             <p className="text-lg text-white/80 font-accent">
-              Created in DreamWeaver by{' '}
+              Created in the DreamWeaver app by{' '}
               {(() => {
                 const names = [getFirstName(creatorDisplayName)];
                 if (audienceChildren && audienceChildren.length > 0) {

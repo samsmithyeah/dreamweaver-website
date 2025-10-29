@@ -106,7 +106,7 @@ export async function GET(
                 const child = children.find((c: Child) => c.id === childId);
                 return child?.childName;
               })
-              .filter((name: string | undefined) => name !== undefined);
+              .filter((name): name is string => name !== undefined);
           }
         }
       } catch (error) {
