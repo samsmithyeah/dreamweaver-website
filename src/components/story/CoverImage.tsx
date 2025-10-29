@@ -31,7 +31,6 @@ export function CoverImage({ imageUrl, title }: CoverImageProps) {
             alt={title}
             fill
             priority
-            unoptimized
             className={`object-cover transition-opacity duration-200 ${imageLoading ? 'opacity-0' : 'opacity-100'}`}
             onLoadingComplete={() => setImageLoading(false)}
             onError={() => setImageLoading(false)}

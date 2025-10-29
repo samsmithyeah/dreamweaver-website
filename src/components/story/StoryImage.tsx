@@ -19,6 +19,12 @@ export function StoryImage({
   const [aspectRatio, setAspectRatio] = useState<string>('1 / 1');
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Reset loading state when imageUrl or pageNumber changes
+  useEffect(() => {
+    setImageLoading(true);
+    setImageError(false);
+  }, [imageUrl, pageNumber]);
+
   useEffect(() => {
     const img = new window.Image();
     img.onload = () => {
@@ -47,7 +53,6 @@ export function StoryImage({
           src={imageUrl}
           alt={`Page ${pageLabel}`}
           fill
-          unoptimized
           className={`transition-opacity duration-200 ${imageLoading ? 'opacity-0' : 'opacity-100'}`}
           style={{ objectFit: 'contain', objectPosition: 'center' }}
           onLoadingComplete={() => setImageLoading(false)}

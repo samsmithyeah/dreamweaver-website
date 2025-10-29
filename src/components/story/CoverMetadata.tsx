@@ -1,5 +1,7 @@
 'use client';
 
+import { useMemo } from 'react';
+
 interface CoverMetadataProps {
   creatorDisplayName?: string;
   audienceChildren?: string[];
@@ -26,20 +28,22 @@ export function CoverMetadata({
     return displayName.split(' ')[0];
   };
 
+  const creatorAndChildrenText = useMemo(() => {
+    if (!creatorDisplayName) return '';
+    const names = [getFirstName(creatorDisplayName)];
+    if (audienceChildren && audienceChildren.length > 0) {
+      names.push(...audienceChildren);
+    }
+    return formatNamesList(names);
+  }, [creatorDisplayName, audienceChildren]);
+
   return (
     <div className="landscape:w-1/2 landscape:flex landscape:flex-col landscape:justify-center text-center space-y-3">
       {(creatorDisplayName || formattedDate) && (
         <div className="space-y-1">
           {creatorDisplayName && (
             <p className="text-lg text-white/80 font-accent">
-              Created in the DreamWeaver app by{' '}
-              {(() => {
-                const names = [getFirstName(creatorDisplayName)];
-                if (audienceChildren && audienceChildren.length > 0) {
-                  names.push(...audienceChildren);
-                }
-                return formatNamesList(names);
-              })()}
+              Created in the DreamWeaver app by {creatorAndChildrenText}
             </p>
           )}
           {formattedDate && (

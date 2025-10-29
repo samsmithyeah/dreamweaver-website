@@ -27,7 +27,7 @@ async function getSharedStory(shareId: string): Promise<Story | null> {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
     const response = await fetch(`${baseUrl}/api/story/${shareId}`, {
-      cache: 'no-store',
+      next: { revalidate: 300 },
     });
 
     if (!response.ok) {

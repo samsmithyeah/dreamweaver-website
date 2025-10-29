@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo } from 'react';
 import { StoryImage } from './StoryImage';
 import { StoryText } from './StoryText';
 import { PageIndicator } from './PageIndicator';
@@ -49,6 +50,16 @@ export function StoryPage({
   const getFirstName = (displayName: string) => {
     return displayName.split(' ')[0];
   };
+
+  const creatorAndChildrenText = useMemo(() => {
+    if (!creatorDisplayName) return '';
+    const names = [getFirstName(creatorDisplayName)];
+    if (audienceChildren && audienceChildren.length > 0) {
+      names.push(...audienceChildren);
+    }
+    return formatNamesList(names);
+  }, [creatorDisplayName, audienceChildren]);
+
   return (
     <div className="bg-[#0f1129] flex items-start justify-center px-6 md:px-12 pt-4 md:pt-8 pb-6 md:pb-8 landscape:items-center landscape:py-4 landscape:px-8">
       <div className="max-w-4xl landscape:max-w-none w-full relative">
@@ -86,14 +97,7 @@ export function StoryPage({
 
         {creatorDisplayName && (
           <p className="text-center text-base text-white/80 font-accent mt-4">
-            Created in the DreamWeaver app by{' '}
-            {(() => {
-              const names = [getFirstName(creatorDisplayName)];
-              if (audienceChildren && audienceChildren.length > 0) {
-                names.push(...audienceChildren);
-              }
-              return formatNamesList(names);
-            })()}
+            Created in the DreamWeaver app by {creatorAndChildrenText}
           </p>
         )}
 

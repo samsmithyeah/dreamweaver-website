@@ -63,11 +63,13 @@ export async function GET(
     const storyDoc = storiesSnapshot.docs[0];
     const storyData = storyDoc.data();
 
+    // Get bucket once for efficiency
+    const bucket = adminStorage.bucket();
+
     // Helper function to convert storage path to public URL
     const getPublicUrl = (storagePath: string): string => {
       if (!storagePath) return '';
       // Firebase Storage public URL format
-      const bucket = adminStorage.bucket();
       return `https://firebasestorage.googleapis.com/v0/b/${bucket.name}/o/${encodeURIComponent(storagePath)}?alt=media`;
     };
 
