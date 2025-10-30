@@ -4,7 +4,7 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { APP_NAME } from '@/lib/constants';
+import { APP_NAME, APP_URL } from '@/lib/constants';
 
 // PlayfairDisplay only for brand name and story text
 const playfairDisplay = localFont({
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   authors: [{ name: `${APP_NAME} Team` }],
   creator: APP_NAME,
   publisher: APP_NAME,
-  metadataBase: new URL('https://dreamspinner-app.com'),
+  metadataBase: new URL(APP_URL),
   icons: {
     icon: [
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: `${APP_NAME} - AI Bedtime Stories for Kids`,
     description:
       'Create magical, personalised bedtime stories with your children using AI.',
-    url: 'https://dreamspinner-app.com',
+    url: APP_URL,
     siteName: APP_NAME,
     type: 'website',
     images: ['/favicon.png'],

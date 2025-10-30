@@ -1,5 +1,6 @@
 // App branding
 export const APP_NAME = 'DreamSpinner';
+export const APP_URL = 'https://dreamspinner-app.com';
 export const APP_TAGLINE =
   'Unleash endless creativity. Create personalised, beautifully illustrated stories with your children in minutes using AI.';
 export const APP_FOOTER_TAGLINE = 'Made with ❤️ for families everywhere';
