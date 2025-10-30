@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { StoryViewer } from '@/components/story/StoryViewer';
 import { getSharedStory } from '@/server/lib/shared-story';
+import { APP_NAME } from '@/lib/constants';
 
 export async function generateMetadata({
   params,
@@ -13,22 +14,22 @@ export async function generateMetadata({
 
   if (!story) {
     return {
-      title: 'Story Not Found - DreamWeaver',
+      title: `Story Not Found - ${APP_NAME}`,
     };
   }
 
   return {
-    title: `${story.title} - DreamWeaver`,
-    description: `Read this magical story created with DreamWeaver`,
+    title: `${story.title} - ${APP_NAME}`,
+    description: `Read this magical story created with ${APP_NAME}`,
     openGraph: {
       title: story.title,
-      description: 'A magical story created with DreamWeaver',
+      description: `A magical story created with ${APP_NAME}`,
       images: story.coverImageUrl ? [story.coverImageUrl] : [],
     },
     twitter: {
       card: 'summary_large_image',
       title: story.title,
-      description: 'A magical story created with DreamWeaver',
+      description: `A magical story created with ${APP_NAME}`,
       images: story.coverImageUrl ? [story.coverImageUrl] : [],
     },
   };

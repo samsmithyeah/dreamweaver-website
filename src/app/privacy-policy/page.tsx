@@ -1,17 +1,16 @@
 import { Metadata } from 'next';
+import { APP_NAME, SUPPORT_EMAIL } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | DreamWeaver',
-  description:
-    "Privacy Policy for DreamWeaver - Learn how we protect your and your children's privacy.",
+  title: `Privacy Policy | ${APP_NAME}`,
+  description: `Privacy Policy for ${APP_NAME} - Learn how we protect your and your children's privacy.`,
 };
 
 export default function PrivacyPolicy() {
   const sections = [
     {
       title: 'Introduction',
-      content:
-        'DreamWeaver ("we," "our," or "us") is committed to protecting the privacy of children and their families. This Privacy Policy explains how we collect, use, and safeguard information when you use our app.',
+      content: `${APP_NAME} ("we," "our," or "us") is committed to protecting the privacy of children and their families. This Privacy Policy explains how we collect, use, and safeguard information when you use our app.`,
     },
     {
       title: 'Information we collect',
@@ -30,8 +29,7 @@ export default function PrivacyPolicy() {
     },
     {
       title: "Children's privacy (COPPA)",
-      content:
-        "DreamWeaver is intended to be used by parents and legal guardians for the benefit of their children. We do not knowingly collect information from or market to children under 13.\n\nBy creating a Child Profile, you represent that you are the parent or legal guardian with authority to provide this information. Parents and guardians have the right to:\n\n• Review information provided about their child\n• Request deletion of their account and all associated data\n• Refuse further collection or use of their child's information\n• Exercise these rights through the Settings screen or by contacting us",
+      content: `${APP_NAME} is intended to be used by parents and legal guardians for the benefit of their children. We do not knowingly collect information from or market to children under 13.\n\nBy creating a Child Profile, you represent that you are the parent or legal guardian with authority to provide this information. Parents and guardians have the right to:\n\n• Review information provided about their child\n• Request deletion of their account and all associated data\n• Refuse further collection or use of their child's information\n• Exercise these rights through the Settings screen or by contacting us`,
     },
     {
       title: 'Data sharing',
@@ -55,8 +53,7 @@ export default function PrivacyPolicy() {
     },
     {
       title: 'Contact us',
-      content:
-        'If you have questions about this Privacy Policy or our data practices, please contact us at:\n\nsupport@dreamweaver-app.com\n\nLast updated: January 15, 2025',
+      content: `If you have questions about this Privacy Policy or our data practices, please contact us at:\n\n${SUPPORT_EMAIL}\n\nLast updated: January 15, 2025`,
     },
   ];
 
@@ -68,8 +65,7 @@ export default function PrivacyPolicy() {
             Privacy Policy
           </h1>
           <p className="text-text-secondary">
-            Learn how DreamWeaver protects your and your children&apos;s
-            privacy.
+            Learn how {APP_NAME} protects your and your children&apos;s privacy.
           </p>
         </div>
 

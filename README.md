@@ -1,11 +1,11 @@
-# DreamWeaver Website
+# DreamSpinner Website
 
-Official website for DreamWeaver - AI-powered personalised bedtime stories for children.
+Official website for DreamSpinner - AI-powered personalised bedtime stories for children.
 
 ## Features
 
 - **Responsive Design**: Optimized for mobile, tablet, and desktop
-- **DreamWeaver Branding**: Matches the app's golden yellow (#D4AF37) and navy theme
+- **DreamSpinner Branding**: Matches the app's golden yellow (#D4AF37) and navy theme
 - **Static Site Generation**: Optimized for performance and SEO
 - **Accessibility**: Built with semantic HTML and ARIA labels
 
@@ -50,7 +50,7 @@ Official website for DreamWeaver - AI-powered personalised bedtime stories for c
 
 1. Connect your GitHub repository to Vercel
 2. Vercel will automatically detect Next.js and deploy
-3. Add your custom domain `dreamweaver-app.com` in Vercel settings
+3. Add your custom domain `dreamspinner-app.com` in Vercel settings
 4. Update Cloudflare DNS to point to Vercel
 
 ### Netlify (Alternative - Free)
@@ -69,27 +69,27 @@ Official website for DreamWeaver - AI-powered personalised bedtime stories for c
 ## Domain Setup with Cloudflare
 
 1. In Cloudflare DNS settings, add a CNAME record:
-   - Name: `@` (or `dreamweaver-app.com`)
+   - Name: `@` (or `dreamspinner-app.com`)
    - Target: Your hosting platform's domain (e.g., `your-site.vercel.app`)
    - Proxy status: Proxied (orange cloud)
 
 2. For www subdomain, add another CNAME:
    - Name: `www`
-   - Target: `dreamweaver-app.com`
+   - Target: `dreamspinner-app.com`
    - Proxy status: Proxied
 
 ## Content Updates
 
-The website content is taken directly from the DreamWeaver app source code to ensure consistency:
+The website content is taken directly from the DreamSpinner app source code to ensure consistency:
 
 - **Privacy Policy**: Matches `app/privacy-policy.tsx` from the app
 - **Terms of Service**: Matches `app/terms-of-service.tsx` from the app
 - **Branding**: Uses the same colors from `constants/Theme.ts`
 - **Typography**:
-  - PlayfairDisplay: Only for "DreamWeaver" brand name (matches app)
+  - PlayfairDisplay: Only for "DreamSpinner" brand name (matches app)
   - Inter: All content, headings, and body text (modern, readable)
   - SpaceMono: App store buttons and accent elements (matches app)
-- **Contact Email**: `support@dreamweaver-app.com`
+- **Contact Email**: `support@dreamspinner-app.com`
 
 ## App Store Links
 
@@ -111,9 +111,9 @@ The app store buttons are currently showing "Coming Soon". When the app is publi
    />
    ```
 
-2. The buttons are already branded and styled to match the DreamWeaver theme
+2. The buttons are already branded and styled to match the DreamSpinner theme
 3. They use the secondary font (SpaceMono) consistent with the app's design
 
 ## Support
 
-For questions about the website, contact: support@dreamweaver-app.com
+For questions about the website, contact: support@dreamspinner-app.com

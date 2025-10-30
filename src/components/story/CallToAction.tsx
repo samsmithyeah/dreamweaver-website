@@ -1,6 +1,7 @@
 'use client';
 
 import AppStoreButtons from '../AppStoreButtons';
+import { APP_NAME } from '@/lib/constants';
 
 interface CallToActionProps {
   onReadAgain: () => void;
@@ -14,8 +15,8 @@ export function CallToAction({ onReadAgain }: CallToActionProps) {
           Want to create your own magical stories?
         </p>
         <p className="text-sm md:text-base landscape:text-lg text-navy-deep/80 font-brand">
-          Download DreamWeaver and start crafting personalised AI-powered
-          stories with your children
+          Download {APP_NAME} and start crafting personalised AI-powered stories
+          with your children
         </p>
       </div>
 

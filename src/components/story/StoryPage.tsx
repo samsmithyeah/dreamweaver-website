@@ -6,6 +6,7 @@ import { StoryText } from './StoryText';
 import { PageIndicator } from './PageIndicator';
 import { NavigationArrows } from './NavigationArrows';
 import { formatCreatorAndChildren } from '@/lib/name-utils';
+import { APP_NAME } from '@/lib/constants';
 
 interface StoryPageData {
   page: number;
@@ -77,7 +78,7 @@ export function StoryPage({
 
         {creatorDisplayName && (
           <p className="text-center text-base text-white/80 font-accent mt-4">
-            Created in the DreamWeaver app by {creatorAndChildrenText}
+            Created in the {APP_NAME} app by {creatorAndChildrenText}
           </p>
         )}
 

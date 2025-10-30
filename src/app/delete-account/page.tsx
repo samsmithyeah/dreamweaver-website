@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
+import { APP_NAME, SUPPORT_EMAIL } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'Delete Your DreamWeaver Account | DreamWeaver',
-  description:
-    'Instructions for permanently deleting your DreamWeaver account and all associated data.',
+  title: `Delete Your ${APP_NAME} Account | ${APP_NAME}`,
+  description: `Instructions for permanently deleting your ${APP_NAME} account and all associated data.`,
   robots: {
     index: false,
     follow: false,
@@ -16,11 +16,11 @@ export default function DeleteAccount() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-primary golden-text-glow mb-4">
-            Delete Your DreamWeaver Account
+            Delete Your {APP_NAME} Account
           </h1>
           <p className="text-foreground text-lg">
             We&apos;re sorry to see you go! This page explains how to
-            permanently delete your DreamWeaver account and all associated data.
+            permanently delete your {APP_NAME} account and all associated data.
           </p>
         </div>
 
@@ -51,7 +51,7 @@ export default function DeleteAccount() {
                 Option 1: Delete from the App (Recommended)
               </h3>
               <ol className="list-decimal list-inside space-y-2 text-foreground">
-                <li>Open the DreamWeaver app</li>
+                <li>Open the {APP_NAME} app</li>
                 <li>Go to Settings</li>
                 <li>Scroll down and tap &ldquo;Delete Account&rdquo;</li>
                 <li>Follow the confirmation prompts</li>
@@ -69,10 +69,10 @@ export default function DeleteAccount() {
               </p>
               <p className="text-primary font-semibold mb-4">
                 <a
-                  href="mailto:support@dreamweaver-app.com"
+                  href={`mailto:${SUPPORT_EMAIL}`}
                   className="hover:text-primary-light transition-colors"
                 >
-                  support@dreamweaver-app.com
+                  {SUPPORT_EMAIL}
                 </a>
               </p>
               <p className="text-foreground mb-2">Include in your email:</p>
@@ -98,7 +98,7 @@ export default function DeleteAccount() {
           </h2>
           <div className="bg-navy-light rounded-lg border border-border p-6">
             <p className="text-foreground mb-4">
-              When you delete your DreamWeaver account, we permanently remove:
+              When you delete your {APP_NAME} account, we permanently remove:
             </p>
             <ul className="list-disc list-inside space-y-2 text-foreground">
               <li>
@@ -214,10 +214,10 @@ export default function DeleteAccount() {
           <p className="text-foreground mb-2">
             <strong>Email:</strong>{' '}
             <a
-              href="mailto:support@dreamweaver-app.com"
+              href={`mailto:${SUPPORT_EMAIL}`}
               className="text-primary hover:text-primary-light transition-colors"
             >
-              support@dreamweaver-app.com
+              {SUPPORT_EMAIL}
             </a>
           </p>
           <p className="text-text-secondary">

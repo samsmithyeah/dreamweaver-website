@@ -1,22 +1,20 @@
 import { Metadata } from 'next';
+import { APP_NAME, SUPPORT_EMAIL } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | DreamWeaver',
-  description:
-    'Terms of Service for DreamWeaver - Learn about our terms and conditions for using the app.',
+  title: `Terms of Service | ${APP_NAME}`,
+  description: `Terms of Service for ${APP_NAME} - Learn about our terms and conditions for using the app.`,
 };
 
 export default function TermsOfService() {
   const sections = [
     {
       title: 'Acceptance of terms',
-      content:
-        'By downloading, installing, or using the DreamWeaver app, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our app.',
+      content: `By downloading, installing, or using the ${APP_NAME} app, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our app.`,
     },
     {
       title: 'Description of service',
-      content:
-        'DreamWeaver is a mobile application that generates personalised bedtime stories for children using artificial intelligence. The service is designed to create age-appropriate, family-friendly content.',
+      content: `${APP_NAME} is a mobile application that generates personalised bedtime stories for children using artificial intelligence. The service is designed to create age-appropriate, family-friendly content.`,
     },
     {
       title: 'User accounts and responsibilities',
@@ -60,8 +58,7 @@ export default function TermsOfService() {
     },
     {
       title: 'Contact information',
-      content:
-        'For questions about these Terms of Service, please contact us at:\n\nsupport@dreamweaver-app.com\n\nLast updated: January 15, 2025',
+      content: `For questions about these Terms of Service, please contact us at:\n\n${SUPPORT_EMAIL}\n\nLast updated: January 15, 2025`,
     },
   ];
 
@@ -73,7 +70,7 @@ export default function TermsOfService() {
             Terms of Service
           </h1>
           <p className="text-text-secondary">
-            Learn about our terms and conditions for using DreamWeaver.
+            Learn about our terms and conditions for using {APP_NAME}.
           </p>
         </div>
 
