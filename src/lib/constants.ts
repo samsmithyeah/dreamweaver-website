@@ -1,11 +1,11 @@
 // App branding
-export const APP_NAME = 'DreamWeaver';
+export const APP_NAME = 'DreamSpinner';
 export const APP_TAGLINE =
   'Unleash endless creativity. Create personalised, beautifully illustrated stories with your children in minutes using AI.';
 export const APP_FOOTER_TAGLINE = 'Made with ❤️ for families everywhere';
 
 // Contact information
-export const SUPPORT_EMAIL = 'support@dreamweaver-app.com';
+export const SUPPORT_EMAIL = 'support@dreamspinner-app.com';
 
 // Navigation items
 export const NAV_ITEMS = [
@@ -16,4 +16,4 @@ export const NAV_ITEMS = [
 ] as const;
 
 // Deep link scheme for mobile app
-export const DEEP_LINK_SCHEME = 'dreamweaver://';
+export const DEEP_LINK_SCHEME = 'dreamspinner://';

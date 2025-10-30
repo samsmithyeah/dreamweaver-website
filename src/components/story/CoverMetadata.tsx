@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react';
 import { formatCreatorAndChildren } from '@/lib/name-utils';
+import { APP_NAME } from '@/lib/constants';
 
 interface CoverMetadataProps {
   creatorDisplayName?: string;
@@ -29,7 +30,7 @@ export function CoverMetadata({
         <div className="space-y-1">
           {creatorDisplayName && (
             <p className="text-lg text-white/80 font-accent">
-              Created in the DreamWeaver app by {creatorAndChildrenText}
+              Created in the {APP_NAME} app by {creatorAndChildrenText}
             </p>
           )}
           {formattedDate && (

@@ -4,6 +4,7 @@ import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { applyActionCode } from 'firebase/auth';
 import { auth } from '../../../lib/firebase';
+import { APP_NAME } from '@/lib/constants';
 
 function VerifyEmailContent() {
   const searchParams = useSearchParams();
@@ -151,7 +152,7 @@ function VerifyEmailContent() {
             </p>
 
             <p className="mb-4 text-text-secondary text-sm">
-              Please return to the DreamWeaver app to continue creating magical
+              Please return to the {APP_NAME} app to continue creating magical
               bedtime stories.
             </p>
           </div>

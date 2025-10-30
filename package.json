@@ -1,6 +1,6 @@
 {
-  "name": "dreamweaver-website",
-  "description": "Official website for DreamWeaver - AI-powered personalised bedtime stories for children",
+  "name": "dreamspinner-website",
+  "description": "Official website for DreamSpinner - AI-powered personalised bedtime stories for children",
   "version": "1.0.0",
   "private": true,
   "scripts": {

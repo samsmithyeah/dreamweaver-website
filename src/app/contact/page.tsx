@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
+import { APP_NAME, SUPPORT_EMAIL } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'Contact Us | DreamWeaver',
-  description:
-    'Get in touch with the DreamWeaver team for support, questions, or feedback.',
+  title: `Contact Us | ${APP_NAME}`,
+  description: `Get in touch with the ${APP_NAME} team for support, questions, or feedback.`,
 };
 
 export default function Contact() {
@@ -16,7 +16,7 @@ export default function Contact() {
           </h1>
           <p className="text-text-secondary max-w-2xl mx-auto">
             Have questions, feedback, or need support? We&apos;d love to hear
-            from you! Our team is here to help make your DreamWeaver experience
+            from you! Our team is here to help make your {APP_NAME} experience
             magical.
           </p>
         </div>
@@ -43,10 +43,10 @@ export default function Contact() {
                 <div>
                   <h3 className="text-foreground font-medium">Email Support</h3>
                   <a
-                    href="mailto:support@dreamweaver-app.com"
+                    href={`mailto:${SUPPORT_EMAIL}`}
                     className="text-primary hover:text-primary-light transition-colors"
                   >
-                    support@dreamweaver-app.com
+                    {SUPPORT_EMAIL}
                   </a>
                   <p className="text-text-secondary text-sm mt-1">
                     We typically respond within 24 hours
@@ -74,7 +74,7 @@ export default function Contact() {
                   </h3>
                   <p className="text-text-secondary text-sm">
                     For business partnerships, media enquiries, or general
-                    questions about DreamWeaver.
+                    questions about {APP_NAME}.
                   </p>
                 </div>
               </div>
@@ -90,17 +90,17 @@ export default function Contact() {
             <div className="space-y-4">
               <div>
                 <h3 className="text-foreground font-medium mb-2">
-                  When will DreamWeaver be available?
+                  When will {APP_NAME} be available?
                 </h3>
                 <p className="text-text-secondary text-sm">
-                  DreamWeaver is available now in the App Store and is coming
+                  {APP_NAME} is available now in the App Store and is coming
                   soon to Google Play.
                 </p>
               </div>
 
               <div>
                 <h3 className="text-foreground font-medium mb-2">
-                  Is DreamWeaver safe for children?
+                  Is {APP_NAME} safe for children?
                 </h3>
                 <p className="text-text-secondary text-sm">
                   Absolutely! We use advanced content moderation and follow
@@ -122,10 +122,10 @@ export default function Contact() {
 
               <div>
                 <h3 className="text-foreground font-medium mb-2">
-                  How does DreamWeaver pricing work?
+                  How does {APP_NAME} pricing work?
                 </h3>
                 <p className="text-text-secondary text-sm">
-                  DreamWeaver uses a credit-based system. You can purchase
+                  {APP_NAME} uses a credit-based system. You can purchase
                   individual credit packs, or subscribe on a monthly or annual
                   basis to get regular credit top-ups at reduced cost. We offer
                   flexible options to fit different family needs and budgets.
@@ -219,7 +219,7 @@ export default function Contact() {
               possible.
             </p>
             <a
-              href="mailto:support@dreamweaver-app.com"
+              href={`mailto:${SUPPORT_EMAIL}`}
               className="inline-flex items-center px-6 py-3 bg-primary text-navy-deep font-medium rounded-lg hover:bg-primary-light transition-colors golden-glow"
             >
               <svg

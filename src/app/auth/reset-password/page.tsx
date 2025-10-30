@@ -4,6 +4,7 @@ import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { confirmPasswordReset } from 'firebase/auth';
 import { auth } from '../../../lib/firebase';
+import { APP_NAME } from '@/lib/constants';
 
 function ResetPasswordContent() {
   const searchParams = useSearchParams();
@@ -94,7 +95,7 @@ function ResetPasswordContent() {
           </p>
 
           <p className="mb-4 text-text-secondary text-sm">
-            You can now return to the DreamWeaver app and sign in with your new
+            You can now return to the {APP_NAME} app and sign in with your new
             password.
           </p>
         </div>

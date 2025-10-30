@@ -4,6 +4,7 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { APP_NAME } from '@/lib/constants';
 
 // PlayfairDisplay only for brand name and story text
 const playfairDisplay = localFont({
@@ -16,15 +17,14 @@ const playfairDisplay = localFont({
 // San Francisco on iOS/macOS, Segoe UI on Windows, Roboto on Android
 
 export const metadata: Metadata = {
-  title: 'DreamWeaver - AI Bedtime Stories for Kids',
-  description:
-    "Create magical, personalised bedtime stories with your children using AI. DreamWeaver generates unique stories tailored to your child's interests and imagination.",
+  title: `${APP_NAME} - AI Bedtime Stories for Kids`,
+  description: `Create magical, personalised bedtime stories with your children using AI. ${APP_NAME} generates unique stories tailored to your child's interests and imagination.`,
   keywords:
     'bedtime stories, children stories, AI stories, personalised stories, kids app, parenting app',
-  authors: [{ name: 'DreamWeaver Team' }],
-  creator: 'DreamWeaver',
-  publisher: 'DreamWeaver',
-  metadataBase: new URL('https://dreamweaver-app.com'),
+  authors: [{ name: `${APP_NAME} Team` }],
+  creator: APP_NAME,
+  publisher: APP_NAME,
+  metadataBase: new URL('https://dreamspinner-app.com'),
   icons: {
     icon: [
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
@@ -34,17 +34,17 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
   openGraph: {
-    title: 'DreamWeaver - AI Bedtime Stories for Kids',
+    title: `${APP_NAME} - AI Bedtime Stories for Kids`,
     description:
       'Create magical, personalised bedtime stories with your children using AI.',
-    url: 'https://dreamweaver-app.com',
-    siteName: 'DreamWeaver',
+    url: 'https://dreamspinner-app.com',
+    siteName: APP_NAME,
     type: 'website',
     images: ['/favicon.png'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'DreamWeaver - AI Bedtime Stories for Kids',
+    title: `${APP_NAME} - AI Bedtime Stories for Kids`,
     description:
       'Create magical, personalised bedtime stories with your children using AI.',
   },
